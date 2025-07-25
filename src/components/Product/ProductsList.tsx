@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { getAllProducts, searchProducts } from '@/services/productService'
 import type { Product as ProductType } from '@/types/product'
 import Product from './Product'
+import Spinner from '../Spinner'
 
 interface ProductsListProps {
   search?: string | null
@@ -33,13 +34,19 @@ export default function ProductsList({ search }: ProductsListProps) {
     fetchProducts()
   }, [search])
 
-  if (loading) return <p className="p-4">Cargando productos...</p>
-
   return (
-    <section className="grid grid-cols-4 gap-4 w-full p-5 pt-0 mt-20 h-fit">
-      {products?.map((product) => (
-        <Product key={product.id} product={product} />
-      ))}
-    </section>
+    <>
+      {loading ? (
+        <div className="mt-20 w-full">
+          <Spinner />
+        </div>
+      ) : (
+        <section className="grid grid-cols-4 gap-4 w-full p-5 mt-14 h-fit">
+          {products?.map((product) => (
+            <Product key={product.id} product={product} />
+          ))}
+        </section>
+      )}
+    </>
   )
 }
