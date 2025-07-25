@@ -39,7 +39,7 @@ export default function Searchbar() {
         </button>
       )}
 
-      <div className="flex items-center border-2 border-neutral-800 rounded-sm px-2 py-1">
+      <div className="flex items-center border-2 border-neutral-500 rounded-sm px-2 py-1">
         <input
           type="text"
           value={query}
@@ -50,7 +50,7 @@ export default function Searchbar() {
         />
 
         <button onClick={handleSearch} className="cursor-pointer">
-          <SearchIcon className="size-5 text-neutral-900" />
+          <SearchIcon className="size-5 text-neutral-900 hover:text-neutral-700" />
         </button>
 
         {hasSearch && (

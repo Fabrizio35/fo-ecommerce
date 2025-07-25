@@ -18,7 +18,7 @@ export default function AddCartButton({ product }: AddCartButtonProps) {
       }
       className={`font-bold py-0.5 w-full mt-auto text-sm rounded-sm flex items-center justify-center cursor-pointer gap-1 transition-colors duration-300 ${
         isInCart
-          ? 'bg-neutral-800 text-neutral-100 hover:bg-neutral-700'
+          ? 'bg-neutral-800 text-neutral-100 hover:bg-neutral-600'
           : 'bg-blue-500 text-neutral-100 hover:bg-blue-400'
       }`}
     >

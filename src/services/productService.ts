@@ -19,7 +19,6 @@ export const getAllProducts = async () => {
     return data as ResponseType
   } catch (error) {
     if (error instanceof Error) {
-      console.error(error)
       throw new Error(error.message)
     }
   }
@@ -38,7 +37,6 @@ export const searchProducts = async (query: string) => {
     return data as ResponseType
   } catch (error) {
     if (error instanceof Error) {
-      console.error(error)
       throw new Error(error.message)
     }
   }
@@ -57,7 +55,6 @@ export const getProductById = async (productId: string) => {
     return product
   } catch (error) {
     if (error instanceof Error) {
-      console.error(error)
       throw new Error(error.message)
     }
   }

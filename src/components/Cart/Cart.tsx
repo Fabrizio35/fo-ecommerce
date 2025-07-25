@@ -11,7 +11,7 @@ export default function Cart() {
   return (
     <>
       {openCart && (
-        <div className="w-full h-full bg-black/30 fixed z-50 top-0 left-0 bottom-0 right-0">
+        <div className="bg-black/30 fixed z-50 inset-0">
           <section className="bg-neutral-200 top-0 bottom-0 right-0 h-full p-4 pt-8 absolute max-w-md w-full">
             <CloseButton />
 

@@ -37,7 +37,7 @@ export default function ProductsList({ search }: ProductsListProps) {
   return (
     <>
       {loading ? (
-        <div className="mt-20 w-full">
+        <div className="mt-32 w-full">
           <Spinner />
         </div>
       ) : (
