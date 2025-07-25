@@ -37,3 +37,11 @@ export type Product = {
   thumbnail: string
   images: string[]
 }
+
+export type CartProduct = {
+  id: Product['id']
+  images: Product['images']
+  title: Product['title']
+  category: Product['category']
+  price: Product['price']
+}
