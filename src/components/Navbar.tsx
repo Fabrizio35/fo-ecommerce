@@ -1,6 +1,6 @@
 import { ShoppingCartFilledIcon } from '@/icons'
 import CartButton from './Cart/CartButton'
-import Searchbar from './Searchbar'
+import Searchbar from './Searchbar/Searchbar'
 
 export default function Navbar() {
   return (

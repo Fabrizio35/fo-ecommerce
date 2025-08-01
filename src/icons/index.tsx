@@ -86,7 +86,7 @@ export const XIcon = ({ className }: IconProps) => {
   )
 }
 
-export const ShoppingCartOff = ({ className }: IconProps) => {
+export const ShoppingCartOffIcon = ({ className }: IconProps) => {
   return (
     <svg
       className={className}
@@ -131,7 +131,7 @@ export const SearchIcon = ({ className }: IconProps) => {
   )
 }
 
-export const ArrowBack = ({ className }: IconProps) => {
+export const ArrowBackIcon = ({ className }: IconProps) => {
   return (
     <svg
       className={className}

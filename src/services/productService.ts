@@ -8,6 +8,8 @@ interface ResponseType {
   total: number
 }
 
+// Function to fetch all products from the API
+// Returns a promise that resolves to an array of products
 export const getAllProducts = async () => {
   try {
     const response = await apiClient('https://dummyjson.com/products?limit=0')
@@ -24,6 +26,8 @@ export const getAllProducts = async () => {
   }
 }
 
+// Function to fetch products by category
+// Returns a promise that resolves to an array of products
 export const searchProducts = async (query: string) => {
   try {
     const response = await apiClient(
@@ -42,6 +46,8 @@ export const searchProducts = async (query: string) => {
   }
 }
 
+// Function to fetch a single product by ID
+// Returns a promise that resolves to a product object
 export const getProductById = async (productId: string) => {
   try {
     const response = await apiClient(

@@ -1,3 +1,5 @@
+// Product type definition for the application
+// This type is used to represent a product in the application
 export type Product = {
   id: number
   title: string
@@ -38,6 +40,8 @@ export type Product = {
   images: string[]
 }
 
+// Cart product type for the store
+// This type is used to represent products in the shopping cart
 export type CartProduct = {
   id: Product['id']
   images: Product['images']

@@ -1,4 +1,4 @@
-import { ShoppingCartIcon, ShoppingCartOff } from '@/icons'
+import { ShoppingCartIcon, ShoppingCartOffIcon } from '@/icons'
 import { useCartStore } from '@/store/cartStore'
 
 export default function CartTitle() {
@@ -13,7 +13,7 @@ export default function CartTitle() {
       {cart.length > 0 ? (
         <ShoppingCartIcon className="size-7" />
       ) : (
-        <ShoppingCartOff className="size-7" />
+        <ShoppingCartOffIcon className="size-7" />
       )}
     </div>
   )

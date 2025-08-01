@@ -10,12 +10,16 @@ interface CartState {
   removeFromCart: (productId: Product['id']) => void
 }
 
+// Utility functions to encode and decode data for "secure" storage
+// Using Base64 encoding for simplicity, but consider using a more secure method in production
 const encode = (value: string) => {
   const encoder = new TextEncoder()
   const bytes = encoder.encode(value)
   return btoa(String.fromCharCode(...bytes))
 }
 
+// Decode function to convert Base64 back to string
+// Note: This is a simple implementation and may not be secure for sensitive data
 const decode = (value: string) => {
   const binary = atob(value)
   const bytes = new Uint8Array(binary.length)
@@ -26,6 +30,8 @@ const decode = (value: string) => {
   return decoder.decode(bytes)
 }
 
+// Create a secure storage using Base64 encoding for the data
+// Note: This is a basic implementation and should be replaced with a more secure method in production
 const secureStorage = createJSONStorage(() => ({
   getItem: (name) => {
     const encoded = localStorage.getItem(name)

@@ -1,9 +1,9 @@
 import { TrashIcon } from '@/icons'
 import { useCartStore } from '@/store/cartStore'
-import type { Product } from '@/types/product'
+import type { CartProduct } from '@/types/product'
 
 interface CartProductProps {
-  product: Product
+  product: CartProduct
 }
 
 export default function CartProduct({ product }: CartProductProps) {
