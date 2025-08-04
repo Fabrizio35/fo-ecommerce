@@ -3,6 +3,7 @@ import { getAllProducts, searchProducts } from '@/services/productService'
 import type { Product as ProductType } from '@/types/product'
 import Product from './Product'
 import Spinner from '../Spinner'
+import ProductModal from './ProductModal'
 
 interface ProductsListProps {
   search?: string | null
@@ -12,6 +13,9 @@ export default function ProductsList({ search }: ProductsListProps) {
   const [products, setProducts] = useState<ProductType[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [_error, setError] = useState<string>('')
+  const [selectedProduct, setSelectedProduct] = useState<ProductType | null>(
+    null
+  )
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -43,8 +47,19 @@ export default function ProductsList({ search }: ProductsListProps) {
       ) : (
         <section className="grid grid-cols-4 gap-4 w-full p-5 mt-14 h-fit">
           {products?.map((product) => (
-            <Product key={product.id} product={product} />
+            <Product
+              key={product.id}
+              product={product}
+              onClick={() => setSelectedProduct(product)}
+            />
           ))}
+
+          {selectedProduct && (
+            <ProductModal
+              onClose={() => setSelectedProduct(null)}
+              product={selectedProduct}
+            />
+          )}
         </section>
       )}
     </>

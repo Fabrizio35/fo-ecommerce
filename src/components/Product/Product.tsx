@@ -3,11 +3,15 @@ import AddCartButton from './AddCartButton'
 
 interface ProductProps {
   product: ProductType
+  onClick: () => void
 }
 
-export default function Product({ product }: ProductProps) {
+export default function Product({ product, onClick }: ProductProps) {
   return (
-    <article className="p-2 rounded-lg shadow-md flex flex-col gap-2 bg-neutral-100">
+    <article
+      onClick={onClick}
+      className="p-2 rounded-lg shadow-md flex flex-col gap-2 bg-neutral-100 hover:scale-105 transition-transform duration-300 cursor-pointer"
+    >
       <img
         src={product.images[0]}
         alt={`${product.title} image`}
