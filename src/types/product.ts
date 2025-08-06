@@ -44,7 +44,7 @@ export type Product = {
 // This type is used to represent products in the shopping cart
 export type CartProduct = {
   id: Product['id']
-  images: Product['images']
+  thumbnail: Product['thumbnail']
   title: Product['title']
   category: Product['category']
   price: Product['price']

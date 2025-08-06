@@ -23,7 +23,7 @@ export default function CartProduct({ product }: CartProductProps) {
       </button>
 
       <img
-        src={product.images[0]}
+        src={product.thumbnail}
         alt={`${product.title} image`}
         loading="lazy"
         className="size-20 object-cover rounded-sm"

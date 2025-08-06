@@ -1,5 +1,5 @@
 import type { Product as ProductType } from '@/types/product'
-import AddCartButton from './AddCartButton'
+import { discountedPrice } from '@/utils'
 
 interface ProductProps {
   product: ProductType
@@ -10,24 +10,36 @@ export default function Product({ product, onClick }: ProductProps) {
   return (
     <article
       onClick={onClick}
-      className="p-2 rounded-lg shadow-md flex flex-col gap-2 bg-neutral-100 hover:scale-105 transition-transform duration-300 cursor-pointer"
+      className="p-2 rounded-lg shadow-md flex flex-col justify-between gap-2 bg-neutral-100 hover:scale-105 transition-transform duration-300 cursor-pointer"
     >
       <img
-        src={product.images[0]}
+        src={product.thumbnail}
         alt={`${product.title} image`}
         loading="lazy"
         className="w-full rounded-sm h-48 object-cover"
       />
 
-      <h2 className="text-sm font-bold text-neutral-900">{product.title}</h2>
-
-      <p className="text-xs text-neutral-800">{product.category}</p>
-
-      <span className="text-neutral-900 font-extrabold text-sm">
-        ${product.price}
+      <span className="text-neutral-700 text-sm font-semibold">
+        {product?.brand}
       </span>
 
-      <AddCartButton product={product} />
+      <h2 className="font-bold text-neutral-900">{product.title}</h2>
+
+      <div>
+        <span className="text-neutral-500 line-through text-lg">
+          ${product.price.toFixed(2)}
+        </span>
+
+        <div className="flex items-center gap-2">
+          <span className="font-bold text-neutral-900 text-xl">
+            ${discountedPrice(product.price, product.discountPercentage)}
+          </span>
+
+          <span className="font-semibold text-blue-500">
+            {product.discountPercentage}% OFF
+          </span>
+        </div>
+      </div>
     </article>
   )
 }
