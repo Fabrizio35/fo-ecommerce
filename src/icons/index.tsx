@@ -219,3 +219,150 @@ export const StarHalfIcon = ({ className }: IconProps) => {
     </svg>
   )
 }
+
+export const FileDescriptionIcon = ({ className }: IconProps) => {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+      <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+      <path d="M9 17h6" />
+      <path d="M9 13h6" />
+    </svg>
+  )
+}
+
+export const DimensionsIcon = ({ className }: IconProps) => {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M3 5h11" />
+      <path d="M12 7l2 -2l-2 -2" />
+      <path d="M5 3l-2 2l2 2" />
+      <path d="M19 10v11" />
+      <path d="M17 19l2 2l2 -2" />
+      <path d="M21 12l-2 -2l-2 2" />
+      <path d="M3 10m0 2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2z" />
+    </svg>
+  )
+}
+
+export const WidthIcon = ({ className }: IconProps) => {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M19.875 12c.621 0 1.125 .512 1.125 1.143v5.714c0 .631 -.504 1.143 -1.125 1.143h-15.875a1 1 0 0 1 -1 -1v-5.857c0 -.631 .504 -1.143 1.125 -1.143h15.75z" />
+      <path d="M9 12v2" />
+      <path d="M6 12v3" />
+      <path d="M12 12v3" />
+      <path d="M18 12v3" />
+      <path d="M15 12v2" />
+      <path d="M3 3v4" />
+      <path d="M3 5h18" />
+      <path d="M21 3v4" />
+    </svg>
+  )
+}
+
+export const HeightIcon = ({ className }: IconProps) => {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 19.875c0 .621 -.512 1.125 -1.143 1.125h-5.714a1.134 1.134 0 0 1 -1.143 -1.125v-15.875a1 1 0 0 1 1 -1h5.857c.631 0 1.143 .504 1.143 1.125z" />
+      <path d="M12 9h-2" />
+      <path d="M12 6h-3" />
+      <path d="M12 12h-3" />
+      <path d="M12 18h-3" />
+      <path d="M12 15h-2" />
+      <path d="M21 3h-4" />
+      <path d="M19 3v18" />
+      <path d="M21 21h-4" />
+    </svg>
+  )
+}
+
+export const DepthIcon = ({ className }: IconProps) => {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 5l-8 4l8 4l8 -4l-8 -4" fill="currentColor" />
+      <path d="M10 12l-6 3l8 4l8 -4l-6 -3" />
+    </svg>
+  )
+}
+
+export const WeightIcon = ({ className }: IconProps) => {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+      <path d="M6.835 9h10.33a1 1 0 0 1 .984 .821l1.637 9a1 1 0 0 1 -.984 1.179h-13.604a1 1 0 0 1 -.984 -1.179l1.637 -9a1 1 0 0 1 .984 -.821z" />
+    </svg>
+  )
+}

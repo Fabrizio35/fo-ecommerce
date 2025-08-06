@@ -1,4 +1,12 @@
-import { XIcon } from '@/icons'
+import {
+  DepthIcon,
+  DimensionsIcon,
+  FileDescriptionIcon,
+  HeightIcon,
+  WeightIcon,
+  WidthIcon,
+  XIcon,
+} from '@/icons'
 import type { Product } from '@/types/product'
 import { useEffect, useState } from 'react'
 import { discountedPrice } from '@/utils'
@@ -40,7 +48,7 @@ export default function ProductModal({ onClose, product }: ProductModalProps) {
     >
       <section
         onClick={(e) => e.stopPropagation()}
-        className={`bg-neutral-200 max-w-2xl w-full rounded-md p-4 shadow-xl relative transform transition-all duration-300 ${
+        className={`bg-neutral-200 flex flex-col gap-4 max-w-2xl w-full rounded-md p-4 shadow-xl relative transform transition-all duration-300 ${
           show
             ? 'opacity-100 scale-100 translate-y-0'
             : 'opacity-0 scale-90 translate-y-2'
@@ -63,16 +71,18 @@ export default function ProductModal({ onClose, product }: ProductModalProps) {
           />
 
           <div className="flex flex-col justify-between w-1/2 h-full">
-            <div className="flex flex-col gap-1">
+            <div>
               <span className="text-neutral-700 text-sm font-semibold">
                 {product?.brand}
               </span>
 
-              <h3 className="text-neutral-900 font-bold">{product.title}</h3>
+              <h3 className="text-neutral-900 font-bold text-lg">
+                {product.title}
+              </h3>
 
-              <Rating rating={product.rating} />
+              <Rating rating={product.rating} className="mt-2" />
 
-              <div className="flex flex-col gap-1 mt-5">
+              <div className="mt-2">
                 <span className="text-neutral-500 line-through">
                   ${product.price.toFixed(2)}
                 </span>
@@ -94,7 +104,65 @@ export default function ProductModal({ onClose, product }: ProductModalProps) {
           </div>
         </div>
 
-        <p className="text-neutral-700 text-sm mt-4">{product.description}</p>
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-1 text-neutral-900">
+            <FileDescriptionIcon className="size-7" />
+
+            <h4 className="font-semibold text-lg">Descripción</h4>
+          </div>
+
+          <p className="text-neutral-800">{product.description}</p>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-1 text-neutral-900">
+            <DimensionsIcon className="size-7" />
+
+            <h4 className="font-semibold text-lg">Dimensiones</h4>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <WidthIcon className="size-7 p-1 rounded-full text-neutral-800 bg-neutral-300" />
+
+              <span className="text-neutral-800">Ancho:</span>
+
+              <span className="text-neutral-800 font-semibold">
+                {product.dimensions.width}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <HeightIcon className="size-7 p-1 rounded-full text-neutral-800 bg-neutral-300" />
+
+              <span className="text-neutral-800">Alto:</span>
+
+              <span className="text-neutral-800 font-semibold">
+                {product.dimensions.height}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <DepthIcon className="size-7 p-1 rounded-full text-neutral-800 bg-neutral-300" />
+
+              <span className="text-neutral-800">Profundidad:</span>
+
+              <span className="text-neutral-800 font-semibold">
+                {product.dimensions.depth}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <WeightIcon className="size-7 p-1 rounded-full text-neutral-800 bg-neutral-300" />
+
+              <span className="text-neutral-800">Peso:</span>
+
+              <span className="text-neutral-800 font-semibold">
+                {product.weight}g
+              </span>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   )

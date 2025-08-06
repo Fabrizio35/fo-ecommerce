@@ -29,14 +29,25 @@ export default function CartProduct({ product }: CartProductProps) {
         className="size-20 object-cover rounded-sm"
       />
 
-      <div className="flex flex-col gap-1">
-        <h3 className="text-neutral-900 text-sm font-bold">{product.title}</h3>
-
-        <p className="text-neutral-700 text-xs">{product.category}</p>
-
-        <span className="text-neutral-900 font-extrabold text-sm">
-          ${product.price.toFixed(2)}
+      <div className="flex flex-col">
+        <span className="text-neutral-700 text-sm font-semibold">
+          {product.brand}
         </span>
+
+        <h3 className="text-neutral-900 font-bold">{product.title}</h3>
+
+        <div className="flex flex-col gap-0.5 mt-2">
+          <span className="text-neutral-800 text-xs">
+            Cantidad: <span className="font-semibold">{product.quantity}</span>
+          </span>
+
+          <span className="text-neutral-800 text-sm">
+            Subtotal:{' '}
+            <span className="font-semibold">
+              ${(product.price * product.quantity).toFixed(2)}
+            </span>
+          </span>
+        </div>
       </div>
     </article>
   )

@@ -46,6 +46,7 @@ export type CartProduct = {
   id: Product['id']
   thumbnail: Product['thumbnail']
   title: Product['title']
-  category: Product['category']
+  brand: Product['brand']
   price: Product['price']
+  quantity: number
 }
