@@ -83,6 +83,7 @@ export const useCartStore = create<CartState>()(
                 brand: product.brand,
                 price: product.price,
                 stock: product.stock,
+                discountPercentage: product.discountPercentage,
                 quantity,
               },
             ],

@@ -1,40 +1,51 @@
 import { MinusIcon, PlusIcon, ShoppingCartIcon, TrashIcon } from '@/icons'
 import { useCartStore } from '@/store/cartStore'
 import type { Product } from '@/types/product'
-import { useEffect, useState } from 'react'
 
 interface AddCartButtonProps {
   product: Product
 }
 
 export default function AddCartButton({ product }: AddCartButtonProps) {
-  const { removeFromCart, addToCart, cart } = useCartStore((state) => state)
+  const { removeFromCart, addToCart, cart, updateQuantity } = useCartStore(
+    (state) => state
+  )
 
   const currentItem = cart.find((item) => item.id === product.id)
-  const isInCart = !!currentItem
-  const [quantity, setQuantity] = useState<number>(currentItem?.quantity || 1)
+  const quantity = currentItem?.quantity || 0
+  const isInCart = quantity > 0
 
   const increase = () => {
-    if (quantity < product.stock) {
-      setQuantity((prev) => prev + 1)
+    if (currentItem && quantity < product.stock) {
+      updateQuantity(product.id, quantity + 1)
     }
   }
 
   const decrease = () => {
-    if (quantity > 1) {
-      setQuantity((prev) => prev - 1)
+    if (currentItem) {
+      if (quantity === 1) {
+        removeFromCart(product.id)
+      } else {
+        updateQuantity(product.id, quantity - 1)
+      }
     }
   }
 
-  useEffect(() => {
-    if (currentItem?.quantity) {
-      setQuantity(currentItem.quantity)
+  const handleAdd = () => {
+    if (product.stock > 0) {
+      addToCart(product, 1)
     }
-  }, [currentItem])
+  }
+
+  if (product.stock === 0) {
+    return (
+      <p className="text-red-500 font-semibold text-sm">Sin stock disponible</p>
+    )
+  }
 
   return (
     <div className="flex flex-col gap-2">
-      {product.stock > 0 ? (
+      {isInCart ? (
         <>
           <div className="flex items-center gap-2">
             <span className="text-sm">Cantidad:</span>
@@ -42,17 +53,19 @@ export default function AddCartButton({ product }: AddCartButtonProps) {
               <button
                 type="button"
                 onClick={decrease}
-                className="px-2 text-sm font-bold hover:bg-neutral-300 transition-colors"
+                disabled={quantity === 0}
+                className="px-2 text-sm font-bold cursor-pointer enabled:hover:text-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300"
               >
-                <MinusIcon className="size-4" />
+                <MinusIcon className="size-3" />
               </button>
-              <span className="px-3 text-sm">{quantity}</span>
+              <span className="px-1 text-sm">{quantity}</span>
               <button
                 type="button"
                 onClick={increase}
-                className="px-2 text-sm font-bold hover:bg-neutral-300 transition-colors"
+                disabled={quantity === product.stock}
+                className="px-2 text-sm font-bold cursor-pointer enabled:hover:text-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300"
               >
-                <PlusIcon className="size-4" />
+                <PlusIcon className="size-3" />
               </button>
             </div>
             <span className="text-xs text-neutral-600">
@@ -61,29 +74,21 @@ export default function AddCartButton({ product }: AddCartButtonProps) {
           </div>
 
           <button
-            onClick={() =>
-              isInCart
-                ? removeFromCart(product.id)
-                : addToCart(product, quantity)
-            }
-            className={`font-bold py-1 w-full text-sm rounded-sm flex items-center justify-center cursor-pointer gap-1 transition-colors duration-300 ${
-              isInCart
-                ? 'bg-neutral-700 text-neutral-100 hover:bg-neutral-500'
-                : 'bg-blue-500 text-neutral-100 hover:bg-blue-400'
-            }`}
+            onClick={() => removeFromCart(product.id)}
+            className="bg-neutral-700 text-neutral-100 hover:bg-neutral-500 font-bold py-1 w-full text-sm rounded-sm flex items-center justify-center cursor-pointer gap-1 transition-colors duration-300"
           >
-            {isInCart ? 'Quitar del carrito' : 'Añadir al carrito'}
-            {isInCart ? (
-              <TrashIcon className="size-5" />
-            ) : (
-              <ShoppingCartIcon className="size-5" />
-            )}
+            Quitar del carrito
+            <TrashIcon className="size-5" />
           </button>
         </>
       ) : (
-        <p className="text-red-500 font-semibold text-sm">
-          Sin stock disponible
-        </p>
+        <button
+          onClick={handleAdd}
+          className="bg-blue-500 text-neutral-100 hover:bg-blue-400 font-bold py-1 w-full text-sm rounded-sm flex items-center justify-center cursor-pointer gap-1 transition-colors duration-300"
+        >
+          Añadir al carrito
+          <ShoppingCartIcon className="size-5" />
+        </button>
       )}
     </div>
   )

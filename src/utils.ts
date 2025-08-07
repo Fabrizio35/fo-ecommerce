@@ -1,4 +1,4 @@
-export const discountedPrice = (price: number, discount: number) => {
+export const discountedPrice = (price: number, discount: number): number => {
   const finalPrice = price - (price * discount) / 100
-  return finalPrice.toFixed(2)
+  return finalPrice
 }

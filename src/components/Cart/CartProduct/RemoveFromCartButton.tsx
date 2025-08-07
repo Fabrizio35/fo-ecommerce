@@ -17,7 +17,7 @@ export default function RemoveFromCartButton({
       onClick={() => removeFromCart(product.id)}
       className="cursor-pointer"
     >
-      <TrashIcon className="text-neutral-900 absolute size-5 top-1 right-1 hover:text-neutral-600 transition-colors duration-200" />
+      <TrashIcon className="text-neutral-800 absolute size-5 top-1 right-1 hover:text-blue-500 transition-colors duration-300" />
     </button>
   )
 }

@@ -5,6 +5,7 @@ import PayButton from './PayButton'
 import CartTitle from './CartTitle'
 import CartList from './CartList'
 import CloseButton from './CloseButton'
+import ClearCart from './ClearCart'
 
 export default function Cart() {
   const [isVisible, setIsVisible] = useState<boolean>(false)
@@ -45,6 +46,8 @@ export default function Cart() {
         <CloseButton />
 
         <CartTitle />
+
+        <ClearCart />
 
         <CartList />
 

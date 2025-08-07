@@ -32,7 +32,10 @@ export default function Product({ product, onClick }: ProductProps) {
 
         <div className="flex items-center gap-2">
           <span className="font-bold text-neutral-900 text-xl">
-            ${discountedPrice(product.price, product.discountPercentage)}
+            $
+            {discountedPrice(product.price, product.discountPercentage).toFixed(
+              2
+            )}
           </span>
 
           <span className="font-semibold text-blue-500">

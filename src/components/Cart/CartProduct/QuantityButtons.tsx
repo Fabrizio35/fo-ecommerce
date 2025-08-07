@@ -25,15 +25,15 @@ export default function QuantityButtons({ product }: QuantityButtonsProps) {
     <div className="flex items-center border border-neutral-400 rounded-sm overflow-hidden">
       <button
         onClick={decrease}
-        className="px-1 text-sm font-bold cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+        className="px-2 text-sm font-bold cursor-pointer enabled:hover:text-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300"
         disabled={product.quantity === 1}
       >
         <MinusIcon className="size-3" />
       </button>
-      <span className="px-2 text-sm">{product.quantity}</span>
+      <span className="px-1 text-sm">{product.quantity}</span>
       <button
         onClick={increase}
-        className="px-1 text-sm font-bold cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+        className="px-2 text-sm font-bold cursor-pointer enabled:hover:text-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300"
         disabled={product.quantity === product.stock}
       >
         <PlusIcon className="size-3" />

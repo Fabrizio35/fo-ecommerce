@@ -26,7 +26,11 @@ export default function MainInfo({ product }: MainInfoProps) {
 
           <div className="flex items-center gap-2">
             <span className="font-bold text-neutral-900 text-2xl">
-              ${discountedPrice(product.price, product.discountPercentage)}
+              $
+              {discountedPrice(
+                product.price,
+                product.discountPercentage
+              ).toFixed(2)}
             </span>
 
             <span className="font-semibold text-blue-500 text-lg">

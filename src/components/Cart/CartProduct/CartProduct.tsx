@@ -22,14 +22,16 @@ export default function CartProduct({ product }: CartProductProps) {
         className="size-20 object-cover rounded-sm"
       />
 
-      <div className='flex flex-col gap-0.5'>
-        <span className="text-neutral-700 text-sm font-semibold">
-          {product.brand}
-        </span>
+      <div className="flex flex-col gap-2">
+        <div className='flex flex-col gap-0.5'>
+          <span className="text-neutral-700 text-xs font-semibold">
+            {product.brand}
+          </span>
 
-        <h3 className="text-neutral-900 font-bold">{product.title}</h3>
+          <h3 className="text-neutral-900 font-bold">{product.title}</h3>
+        </div>
 
-        <div className="flex flex-col gap-1 mt-1">
+        <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
             <span className="text-neutral-900 text-xs">Cantidad:</span>
             <QuantityButtons product={product} />

@@ -49,5 +49,6 @@ export type CartProduct = {
   brand: Product['brand']
   price: Product['price']
   stock: Product['stock']
+  discountPercentage: Product['discountPercentage']
   quantity: number
 }
