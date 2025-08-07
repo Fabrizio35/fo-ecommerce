@@ -4,7 +4,7 @@ import Searchbar from './Searchbar/Searchbar'
 
 export default function Navbar() {
   return (
-    <header className="w-full py-3 px-5 flex items-center justify-between shadow-md fixed bg-neutral-200 max-h-14 h-full z-50">
+    <header className="w-full px-5 flex items-center justify-between shadow-md fixed top-0 right-0 left-0 bg-neutral-200 max-h-14 h-full z-50">
       <div className="flex items-center gap-1 text-neutral-900">
         <h1 className="text-xl font-extrabold">FO Ecommerce</h1>
 

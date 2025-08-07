@@ -3,7 +3,7 @@ import { getAllProducts, searchProducts } from '@/services/productService'
 import type { Product as ProductType } from '@/types/product'
 import Product from './Product'
 import Spinner from '../Spinner'
-import ProductModal from './ProductModal'
+import ProductModal from './ProductModal/ProductModal'
 
 interface ProductsListProps {
   search?: string | null
@@ -45,7 +45,7 @@ export default function ProductsList({ search }: ProductsListProps) {
           <Spinner />
         </div>
       ) : (
-        <section className="grid grid-cols-6 gap-5 w-full p-5 mt-14 h-fit">
+        <section className="grid grid-cols-5 gap-5 p-5 mt-14 h-fit w-[1200px] mx-auto">
           {products?.map((product) => (
             <Product
               key={product.id}

@@ -48,5 +48,6 @@ export type CartProduct = {
   title: Product['title']
   brand: Product['brand']
   price: Product['price']
+  stock: Product['stock']
   quantity: number
 }

@@ -7,7 +7,7 @@ export default function CartTitle() {
   return (
     <div className="flex items-center justify-center gap-1 text-neutral-900 font-bold">
       <h2 className="text-xl">
-        {cart.length > 0 ? 'Carrito de compras' : 'Carrito de compras vacío'}
+        {cart.length > 0 ? 'Carrito' : 'Carrito vacío'}
       </h2>
 
       {cart.length > 0 ? (

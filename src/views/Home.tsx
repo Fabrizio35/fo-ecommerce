@@ -1,5 +1,4 @@
 import { useLocation } from 'react-router'
-// import Sidebar from '@/components/Sidebar'
 import ProductsList from '@/components/Product/ProductsList'
 import Cart from '@/components/Cart/Cart'
 
@@ -11,9 +10,7 @@ export default function Home() {
   const query = useQuery().get('search')
 
   return (
-    <div className="flex">
-      {/* <Sidebar /> */}
-
+    <div>
       <ProductsList search={query} />
 
       <Cart />

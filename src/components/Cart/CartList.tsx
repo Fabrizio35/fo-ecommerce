@@ -1,5 +1,5 @@
 import { useCartStore } from '@/store/cartStore'
-import CartProduct from './CartProduct'
+import CartProduct from './CartProduct/CartProduct'
 
 export default function CartList() {
   const { cart } = useCartStore((state) => state)
