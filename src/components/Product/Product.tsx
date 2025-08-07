@@ -19,14 +19,14 @@ export default function Product({ product, onClick }: ProductProps) {
         className="w-full rounded-sm h-48 object-cover"
       />
 
-      <span className="text-neutral-700 text-sm font-semibold">
+      <span className="text-neutral-600 text-sm font-semibold">
         {product?.brand}
       </span>
 
       <h2 className="font-bold text-neutral-900">{product.title}</h2>
 
       <div>
-        <span className="text-neutral-500 line-through text-lg">
+        <span className="text-neutral-500 line-through">
           ${product.price.toFixed(2)}
         </span>
 

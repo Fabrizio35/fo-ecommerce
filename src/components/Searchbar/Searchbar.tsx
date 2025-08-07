@@ -46,7 +46,7 @@ export default function Searchbar() {
     <div className="flex items-center gap-2">
       {hasSearch && <ArrowBack handleBack={handleBack} />}
 
-      <div className="flex items-center border-2 border-neutral-500 rounded-sm px-2 py-1">
+      <div className="flex items-center border-2 border-neutral-500 focus-within:border-blue-500 rounded-sm px-2 py-1 transition-colors duration-300">
         <SearchInput
           handleKeyDown={handleKeyDown}
           query={query}

@@ -8,9 +8,9 @@ export default function CartButton() {
     <button
       type="button"
       onClick={() => setOpenCart(true)}
-      className="group cursor-pointer flex items-center gap-1 px-2 p-0.5 text-neutral-900 font-bold text-lg"
+      className="cursor-pointer flex items-center gap-1 px-2 p-0.5 text-neutral-900 font-bold text-lg hover:text-blue-500 transition-colors duration-300"
     >
-      <span className="group-hover:underline">Carrito</span>
+      <span>Carrito</span>
       <ShoppingCartIcon className="size-6" />
       {cart.length > 0 && (
         <span className="px-1 font-extrabold">{cart.length}</span>
