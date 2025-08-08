@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router'
-import ProductsList from '@/components/Product/ProductsList'
+import ProductList from '@/components/Product/ProductList'
 import Cart from '@/components/Cart/Cart'
 
 function useQuery() {
@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <div>
-      <ProductsList search={query} />
+      <ProductList search={query} />
 
       <Cart />
     </div>

@@ -9,7 +9,7 @@ interface ProductsListProps {
   search?: string | null
 }
 
-export default function ProductsList({ search }: ProductsListProps) {
+export default function ProductList({ search }: ProductsListProps) {
   const [products, setProducts] = useState<ProductType[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [_error, setError] = useState<string>('')
@@ -43,6 +43,10 @@ export default function ProductsList({ search }: ProductsListProps) {
       {loading ? (
         <div className="mt-32 w-full">
           <Spinner />
+        </div>
+      ) : products.length === 0 ? (
+        <div className="mt-32 text-center text-gray-500 text-lg">
+          No se encontraron productos.
         </div>
       ) : (
         <section className="grid grid-cols-5 gap-5 p-5 mt-14 h-fit w-[1200px] mx-auto">

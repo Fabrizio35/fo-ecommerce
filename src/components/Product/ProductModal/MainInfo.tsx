@@ -10,12 +10,16 @@ interface MainInfoProps {
 export default function MainInfo({ product }: MainInfoProps) {
   return (
     <div className="flex flex-col justify-between w-1/2 h-full">
-      <div>
+      <div className='flex flex-col gap-0'>
         <span className="text-neutral-700 text-sm font-semibold">
           {product?.brand}
         </span>
 
         <h3 className="text-neutral-900 font-bold text-lg">{product.title}</h3>
+
+        <span className="text-sm font-light text-neutral-600">
+          {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+        </span>
 
         <Rating rating={product.rating} className="mt-2" />
 

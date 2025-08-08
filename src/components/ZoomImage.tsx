@@ -54,13 +54,6 @@ export default function ZoomImage({
         backgroundPosition: 'center',
       }}
     >
-      <img
-        src={src}
-        alt={alt}
-        className="size-full object-cover rounded-md pointer-events-none"
-        draggable={false}
-      />
-
       {showLens && (
         <div
           style={{
@@ -72,6 +65,7 @@ export default function ZoomImage({
             borderRadius: '50%',
             border: '2px solid rgba(255,255,255,0.8)',
             boxShadow: '0 0 8px rgba(0,0,0,0.5)',
+            backgroundColor: '#e5e5e5',
             backgroundImage: `url(${src})`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: `${zoom * 100}%`,

@@ -1,5 +1,5 @@
 import type { Product } from '@/types/product'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import ProductDescription from './ProductDescription'
 import ProductDimensions from './ProductDimensions'
 import ProductInfo from './ProductInfo'
@@ -15,23 +15,23 @@ interface ProductModalProps {
 export default function ProductModal({ onClose, product }: ProductModalProps) {
   const [show, setShow] = useState<boolean>(false)
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setShow(false)
     setTimeout(onClose, 300)
-  }
+  }, [onClose])
 
   useEffect(() => {
     setShow(true)
 
     const handleKeyDown = (evt: KeyboardEvent) => {
       if (evt.key === 'Escape') {
-        onClose()
+        handleClose()
       }
     }
 
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [onClose])
+  }, [handleClose])
 
   return (
     <div
@@ -42,7 +42,7 @@ export default function ProductModal({ onClose, product }: ProductModalProps) {
     >
       <section
         onClick={(e) => e.stopPropagation()}
-        className={`bg-neutral-200 flex flex-col gap-4 max-w-2xl w-full rounded-md p-4 shadow-xl relative transform transition-all duration-300 ${
+        className={`bg-neutral-200 flex flex-col gap-4 max-w-2xl w-full rounded-md p-4 shadow-xl relative my-10 transform transition-all duration-300 ${
           show
             ? 'opacity-100 scale-100 translate-y-0'
             : 'opacity-0 scale-90 translate-y-2'
