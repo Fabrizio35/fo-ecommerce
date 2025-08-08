@@ -5,6 +5,7 @@ import ProductDimensions from './ProductDimensions'
 import ProductInfo from './ProductInfo'
 import CloseModalButton from './CloseModalButton'
 import MainInfo from './MainInfo'
+import ZoomImage from '@/components/ZoomImage'
 
 interface ProductModalProps {
   product: Product
@@ -50,12 +51,7 @@ export default function ProductModal({ onClose, product }: ProductModalProps) {
         <CloseModalButton handleClose={handleClose} />
 
         <div className="flex items-center gap-2 h-[300px]">
-          <img
-            src={product.thumbnail}
-            alt={`${product.title} image`}
-            loading="lazy"
-            className="w-1/2 rounded-md"
-          />
+          <ZoomImage src={product.thumbnail} alt={`${product.title} image`} />
 
           <MainInfo product={product} />
         </div>
