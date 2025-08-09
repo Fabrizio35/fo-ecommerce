@@ -1,5 +1,6 @@
 import type { Product } from '@/types/product'
 import { useCallback, useEffect, useState } from 'react'
+import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import ProductDescription from './ProductDescription'
 import ProductDimensions from './ProductDimensions'
 import ProductInfo from './ProductInfo'
@@ -14,6 +15,8 @@ interface ProductModalProps {
 
 export default function ProductModal({ onClose, product }: ProductModalProps) {
   const [show, setShow] = useState<boolean>(false)
+
+  useDocumentTitle(show ? `${product.title} | FO Ecommerce` : 'FO Ecommerce')
 
   const handleClose = useCallback(() => {
     setShow(false)
