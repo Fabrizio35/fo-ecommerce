@@ -10,10 +10,10 @@ export default function Home() {
   const query = useQuery().get('search')
 
   return (
-    <div>
+    <>
       <ProductList search={query} />
 
       <Cart />
-    </div>
+    </>
   )
 }

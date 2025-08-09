@@ -1,5 +1,6 @@
 import { useCartStore } from '@/store/cartStore'
 import { useState, useEffect, useCallback } from 'react'
+import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import TotalPrice from './TotalPrice'
 import PayButton from './PayButton'
 import CartTitle from './CartTitle'
@@ -12,6 +13,10 @@ export default function Cart() {
   const [shouldRender, setShouldRender] = useState<boolean>(false)
 
   const { openCart, cart, setOpenCart } = useCartStore((state) => state)
+
+  useDocumentTitle(
+    openCart ? 'Carrito de compras | FO Ecommerce' : 'FO Ecommerce'
+  )
 
   const handleClose = useCallback(() => {
     setIsVisible(false)

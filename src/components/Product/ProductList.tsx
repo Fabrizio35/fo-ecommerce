@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useNavigate, useLocation } from 'react-router'
 import { getAllProducts, searchProducts } from '@/services/productService'
 import type { Product as ProductType } from '@/types/product'
 import Product from './Product'
@@ -16,6 +17,23 @@ export default function ProductList({ search }: ProductsListProps) {
   const [selectedProduct, setSelectedProduct] = useState<ProductType | null>(
     null
   )
+
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const handleOpenModal = (product: ProductType) => {
+    setSelectedProduct(product)
+    const searchParams = new URLSearchParams(location.search)
+    searchParams.set('productId', product.id.toString())
+    navigate({ search: searchParams.toString() }, { replace: true })
+  }
+
+  const handleCloseModal = () => {
+    setSelectedProduct(null)
+    const searchParams = new URLSearchParams(location.search)
+    searchParams.delete('productId')
+    navigate({ search: searchParams.toString() }, { replace: true })
+  }
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -38,6 +56,20 @@ export default function ProductList({ search }: ProductsListProps) {
     fetchProducts()
   }, [search])
 
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search)
+    const productId = searchParams.get('productId')
+
+    if (productId && products.length > 0) {
+      const product = products.find((p) => p.id.toString() === productId)
+      if (product && product !== selectedProduct) {
+        setSelectedProduct(product)
+      }
+    } else if (!productId && selectedProduct !== null) {
+      setSelectedProduct(null)
+    }
+  }, [location.search, products, selectedProduct])
+
   return (
     <>
       {loading ? (
@@ -54,13 +86,13 @@ export default function ProductList({ search }: ProductsListProps) {
             <Product
               key={product.id}
               product={product}
-              onClick={() => setSelectedProduct(product)}
+              onClick={() => handleOpenModal(product)}
             />
           ))}
 
           {selectedProduct && (
             <ProductModal
-              onClose={() => setSelectedProduct(null)}
+              onClose={handleCloseModal}
               product={selectedProduct}
             />
           )}

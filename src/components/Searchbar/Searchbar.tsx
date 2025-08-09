@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router'
 import ArrowBack from './ArrowBack'
 import SearchInput from './SearchInput'
@@ -6,13 +6,15 @@ import SearchButton from './SearchButton'
 import ClearButton from './ClearButton'
 
 export default function Searchbar() {
-  const [query, setQuery] = useState<string>('')
-
   const navigate = useNavigate()
   const location = useLocation()
 
   const searchParams = new URLSearchParams(location.search)
   const hasSearch = searchParams.has('search')
+
+  const [query, setQuery] = useState<string>(
+    () => searchParams.get('search') ?? ''
+  )
 
   // Function to handle search submission
   // It navigates to the search results page with the query
@@ -41,6 +43,11 @@ export default function Searchbar() {
     if (hasSearch) navigate(-1)
     else navigate('/')
   }
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    setQuery(params.get('search') ?? '')
+  }, [location.search])
 
   return (
     <div className="flex items-center gap-2">
