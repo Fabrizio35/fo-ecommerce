@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router'
 import Home from './views/Home'
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar/Navbar'
 
 export default function App() {
   return (
