@@ -10,7 +10,7 @@ interface MainInfoProps {
 export default function MainInfo({ product }: MainInfoProps) {
   return (
     <div className="flex flex-col justify-between w-1/2 h-full">
-      <div className='flex flex-col gap-0'>
+      <div className="flex flex-col">
         <span className="text-neutral-700 text-sm font-semibold">
           {product?.brand}
         </span>

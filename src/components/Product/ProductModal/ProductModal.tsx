@@ -7,7 +7,7 @@ import ProductInfo from './ProductInfo'
 import CloseModalButton from './CloseModalButton'
 import MainInfo from './MainInfo'
 import ZoomImage from '@/components/ZoomImage'
-import ReviewsSection from './Reviews/ReviewsSection'
+import ReviewSection from './Reviews/ReviewSection'
 
 interface ProductModalProps {
   product: Product
@@ -26,6 +26,11 @@ export default function ProductModal({ onClose, product }: ProductModalProps) {
 
   useEffect(() => {
     setShow(true)
+    const scrollBarWidth =
+      window.innerWidth - document.documentElement.clientWidth
+
+    document.body.style.overflow = 'hidden'
+    document.body.style.paddingRight = `${scrollBarWidth}px`
 
     const handleKeyDown = (evt: KeyboardEvent) => {
       if (evt.key === 'Escape') {
@@ -34,7 +39,11 @@ export default function ProductModal({ onClose, product }: ProductModalProps) {
     }
 
     document.addEventListener('keydown', handleKeyDown)
-    return () => document.removeEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
+      document.removeEventListener('keydown', handleKeyDown)
+    }
   }, [handleClose])
 
   return (
@@ -46,7 +55,7 @@ export default function ProductModal({ onClose, product }: ProductModalProps) {
     >
       <section
         onClick={(e) => e.stopPropagation()}
-        className={`bg-neutral-200 flex flex-col gap-4 max-w-2xl w-full max-h-[95vh] overflow-y-scroll rounded-md p-4 shadow-xl relative my-10 transform transition-all duration-300 ${
+        className={`bg-neutral-200 flex flex-col gap-4 max-w-2xl w-full max-h-[95vh] h-full overflow-y-scroll rounded-md p-4 shadow-xl relative my-10 transform transition-all duration-300 ${
           show
             ? 'opacity-100 scale-100 translate-y-0'
             : 'opacity-0 scale-90 translate-y-2'
@@ -54,7 +63,7 @@ export default function ProductModal({ onClose, product }: ProductModalProps) {
       >
         <CloseModalButton handleClose={handleClose} />
 
-        <div className="flex items-center gap-2 h-[300px]">
+        <div className="flex items-center gap-2">
           <ZoomImage src={product.thumbnail} alt={`${product.title} image`} />
 
           <MainInfo product={product} />
@@ -78,7 +87,7 @@ export default function ProductModal({ onClose, product }: ProductModalProps) {
           warrantyInformation={product.warrantyInformation}
         />
 
-        <ReviewsSection reviews={product.reviews} />
+        <ReviewSection reviews={product.reviews} />
       </section>
     </div>
   )

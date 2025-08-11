@@ -2,14 +2,16 @@ import { StarFilledIcon, StarHalfIcon, StarIcon } from '@/icons'
 
 interface RatingProps {
   rating: number
-  className?: string
   showValue?: boolean
+  className?: string
+  size?: string
 }
 
 export default function Rating({
   rating,
-  className = '',
   showValue = true,
+  className = '',
+  size = 'size-4',
 }: RatingProps) {
   return (
     <div className={`flex items-center gap-1 ${className}`}>
@@ -18,10 +20,10 @@ export default function Rating({
         const half = i === Math.ceil(rating) && !Number.isInteger(rating)
 
         if (full)
-          return <StarFilledIcon key={i} className="size-4 text-blue-500" />
+          return <StarFilledIcon key={i} className={`text-blue-500 ${size}`} />
         if (half)
-          return <StarHalfIcon key={i} className="size-4 text-blue-500" />
-        return <StarIcon key={i} className="size-4 text-blue-500" />
+          return <StarHalfIcon key={i} className={`text-blue-500 ${size}`} />
+        return <StarIcon key={i} className={`text-blue-500 ${size}`} />
       })}
 
       {showValue && (

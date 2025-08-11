@@ -54,6 +54,8 @@ export default function ZoomImage({
         backgroundPosition: 'center',
       }}
     >
+      <img src={src} alt={alt} className="size-full object-contain" />
+
       {showLens && (
         <div
           style={{
