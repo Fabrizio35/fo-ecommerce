@@ -4,8 +4,13 @@ import ArrowBack from './ArrowBack'
 import SearchInput from './SearchInput'
 import SearchButton from './SearchButton'
 import ClearButton from './ClearButton'
+import { useSearchStore } from '@/store/searchStore'
+import { XIcon } from '@/icons'
 
 export default function Searchbar() {
+  const { addSearch, recentSearches, clearSearches, removeSearch } =
+    useSearchStore((state) => state)
+
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -15,12 +20,19 @@ export default function Searchbar() {
   const [query, setQuery] = useState<string>(
     () => searchParams.get('search') ?? ''
   )
+  const [isFocused, setIsFocused] = useState<boolean>(false)
 
   // Function to handle search submission
   // It navigates to the search results page with the query
-  const handleSearch = () => {
-    if (query.trim()) {
-      navigate(`/?search=${encodeURIComponent(query)}`)
+  const handleSearch = (searchTerm?: string, fromClick = false) => {
+    const term = (searchTerm ?? query).trim()
+
+    if (term) {
+      addSearch(term)
+      navigate(`/?search=${encodeURIComponent(term)}`)
+
+      if (fromClick) setIsFocused(false)
+      else setIsFocused(true)
     }
   }
 
@@ -53,16 +65,55 @@ export default function Searchbar() {
     <div className="flex items-center gap-2">
       {hasSearch && <ArrowBack handleBack={handleBack} />}
 
-      <div className="flex items-center border-2 border-neutral-500 focus-within:border-blue-500 rounded-sm px-2 py-1 transition-colors duration-300">
-        <SearchInput
-          handleKeyDown={handleKeyDown}
-          query={query}
-          setQuery={setQuery}
-        />
+      <div className="relative flex items-center">
+        <div className="flex items-center border-2 border-neutral-500 focus-within:border-blue-500 rounded-sm px-2 py-1 transition-colors duration-300">
+          <SearchInput
+            handleKeyDown={handleKeyDown}
+            query={query}
+            setQuery={setQuery}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setTimeout(() => setIsFocused(false), 100)}
+          />
 
-        <SearchButton handleSearch={handleSearch} />
+          <SearchButton handleSearch={handleSearch} />
 
-        {hasSearch && <ClearButton handleClear={handleClear} />}
+          {hasSearch && <ClearButton handleClear={handleClear} />}
+        </div>
+
+        {isFocused && recentSearches.length > 0 && (
+          <ul className="absolute top-full left-0 mt-1 w-full bg-white border border-gray-300 rounded-sm shadow-md z-50 max-h-60 overflow-y-auto">
+            <div className="w-full flex justify-center items-center py-0.5">
+              <button
+                type="button"
+                onClick={() => clearSearches()}
+                className="text-blue-500 text-sm cursor-pointer text-center w-fit hover:underline"
+              >
+                Borrar historial
+              </button>
+            </div>
+            {recentSearches.map((item, index) => (
+              <li
+                key={index}
+                className="flex justify-between items-center px-3 py-2 hover:bg-gray-100 text-neutral-800 cursor-pointer"
+                onClick={() => handleSearch(item, true)}
+              >
+                <span>{item}</span>
+
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    removeSearch(item)
+                  }}
+                  className="ml-2 cursor-pointer z-50 text-neutral-800 hover:text-red-500 transition-colors duration-200"
+                  aria-label={`Eliminar búsqueda ${item}`}
+                >
+                  <XIcon className="size-4" />
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   )

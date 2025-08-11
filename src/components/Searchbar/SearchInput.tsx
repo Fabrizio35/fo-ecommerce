@@ -1,4 +1,4 @@
-interface SearchInputProps {
+interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   query: string
   setQuery: (query: string) => void
   handleKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void
@@ -8,6 +8,7 @@ export default function SearchInput({
   handleKeyDown,
   query,
   setQuery,
+  ...rest
 }: SearchInputProps) {
   return (
     <input
@@ -17,6 +18,7 @@ export default function SearchInput({
       onKeyDown={handleKeyDown}
       placeholder="Buscar producto..."
       className="outline-none text-neutral-900 px-1"
+      {...rest}
     />
   )
 }
