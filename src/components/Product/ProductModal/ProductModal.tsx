@@ -7,6 +7,7 @@ import ProductInfo from './ProductInfo'
 import CloseModalButton from './CloseModalButton'
 import MainInfo from './MainInfo'
 import ZoomImage from '@/components/ZoomImage'
+import ReviewsSection from './Reviews/ReviewsSection'
 
 interface ProductModalProps {
   product: Product
@@ -45,7 +46,7 @@ export default function ProductModal({ onClose, product }: ProductModalProps) {
     >
       <section
         onClick={(e) => e.stopPropagation()}
-        className={`bg-neutral-200 flex flex-col gap-4 max-w-2xl w-full rounded-md p-4 shadow-xl relative my-10 transform transition-all duration-300 ${
+        className={`bg-neutral-200 flex flex-col gap-4 max-w-2xl w-full max-h-[95vh] overflow-y-scroll rounded-md p-4 shadow-xl relative my-10 transform transition-all duration-300 ${
           show
             ? 'opacity-100 scale-100 translate-y-0'
             : 'opacity-0 scale-90 translate-y-2'
@@ -59,11 +60,25 @@ export default function ProductModal({ onClose, product }: ProductModalProps) {
           <MainInfo product={product} />
         </div>
 
-        <ProductDescription product={product} />
+        <ProductDescription
+          description={product.description}
+          tags={product.tags}
+        />
 
-        <ProductDimensions product={product} />
+        <ProductDimensions
+          weight={product.weight}
+          width={product.dimensions.width}
+          height={product.dimensions.height}
+          depth={product.dimensions.depth}
+        />
 
-        <ProductInfo product={product} />
+        <ProductInfo
+          availabilityStatus={product.availabilityStatus}
+          shippingInformation={product.shippingInformation}
+          warrantyInformation={product.warrantyInformation}
+        />
+
+        <ReviewsSection reviews={product.reviews} />
       </section>
     </div>
   )

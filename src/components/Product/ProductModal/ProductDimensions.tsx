@@ -10,10 +10,18 @@ import DetailTitle from './DetailTitle'
 import InfoSection from './InfoSection'
 
 interface ProductDimensionsProps {
-  product: Product
+  width: Product['dimensions']['width']
+  height: Product['dimensions']['height']
+  depth: Product['dimensions']['depth']
+  weight: Product['weight']
 }
 
-export default function ProductDimensions({ product }: ProductDimensionsProps) {
+export default function ProductDimensions({
+  depth,
+  height,
+  weight,
+  width,
+}: ProductDimensionsProps) {
   return (
     <div className="flex flex-col gap-2">
       <DetailTitle
@@ -27,7 +35,7 @@ export default function ProductDimensions({ product }: ProductDimensionsProps) {
             <WidthIcon className="size-7 p-1 rounded-full text-neutral-800 bg-neutral-300" />
           }
           label="Ancho"
-          value={String(product.dimensions.width)}
+          value={String(width)}
         />
 
         <InfoSection
@@ -35,7 +43,7 @@ export default function ProductDimensions({ product }: ProductDimensionsProps) {
             <HeightIcon className="size-7 p-1 rounded-full text-neutral-800 bg-neutral-300" />
           }
           label="Alto"
-          value={String(product.dimensions.height)}
+          value={String(height)}
         />
 
         <InfoSection
@@ -43,7 +51,7 @@ export default function ProductDimensions({ product }: ProductDimensionsProps) {
             <DepthIcon className="size-7 p-1 rounded-full text-neutral-800 bg-neutral-300" />
           }
           label="Profundidad"
-          value={String(product.dimensions.depth)}
+          value={String(depth)}
         />
 
         <InfoSection
@@ -51,7 +59,7 @@ export default function ProductDimensions({ product }: ProductDimensionsProps) {
             <WeightIcon className="size-7 p-1 rounded-full text-neutral-800 bg-neutral-300" />
           }
           label="Peso"
-          value={String(product.weight)}
+          value={String(weight)}
         />
       </div>
     </div>

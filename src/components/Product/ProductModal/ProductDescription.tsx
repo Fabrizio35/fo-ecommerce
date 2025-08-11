@@ -3,11 +3,13 @@ import type { Product } from '@/types/product'
 import DetailTitle from './DetailTitle'
 
 interface ProductDescriptionProps {
-  product: Product
+  description: Product['description']
+  tags: Product['tags']
 }
 
 export default function ProductDescription({
-  product,
+  description,
+  tags,
 }: ProductDescriptionProps) {
   return (
     <div className="flex flex-col gap-2">
@@ -17,10 +19,10 @@ export default function ProductDescription({
       />
 
       <div className="flex flex-col gap-1">
-        <p className="text-neutral-800">{product.description}</p>
+        <p className="text-neutral-800">{description}</p>
 
         <div className="flex items-center gap-1">
-          {product.tags.map((tag) => (
+          {tags.map((tag) => (
             <span key={tag} className="text-neutral-600">
               #{tag}
             </span>

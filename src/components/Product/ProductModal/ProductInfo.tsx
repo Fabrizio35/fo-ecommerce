@@ -9,10 +9,16 @@ import DetailTitle from './DetailTitle'
 import InfoSection from './InfoSection'
 
 interface ProductInfoProps {
-  product: Product
+  warrantyInformation: Product['warrantyInformation']
+  shippingInformation: Product['shippingInformation']
+  availabilityStatus: Product['availabilityStatus']
 }
 
-export default function ProductInfo({ product }: ProductInfoProps) {
+export default function ProductInfo({
+  availabilityStatus,
+  shippingInformation,
+  warrantyInformation,
+}: ProductInfoProps) {
   return (
     <div className="flex flex-col gap-2">
       <DetailTitle
@@ -26,7 +32,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
             <CircleCheckIcon className="size-7 p-1 rounded-full text-neutral-800 bg-neutral-300" />
           }
           label="Garantía"
-          value={product.warrantyInformation}
+          value={warrantyInformation}
         />
 
         <InfoSection
@@ -34,7 +40,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
             <CubeSendIcon className="size-7 p-1 rounded-full text-neutral-800 bg-neutral-300" />
           }
           label="Envío"
-          value={product.shippingInformation}
+          value={shippingInformation}
         />
 
         <InfoSection
@@ -42,7 +48,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
             <ProgressAlertIcon className="size-7 p-1 rounded-full text-neutral-800 bg-neutral-300" />
           }
           label="Estado de disponibilidad"
-          value={product.availabilityStatus}
+          value={availabilityStatus}
         />
       </div>
     </div>
