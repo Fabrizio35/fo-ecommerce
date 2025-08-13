@@ -5,11 +5,10 @@ import SearchInput from './SearchInput'
 import SearchButton from './SearchButton'
 import ClearButton from './ClearButton'
 import { useSearchStore } from '@/store/searchStore'
-import { XIcon } from '@/icons'
+import SearchDropdown from './SearchDropdown/SearchDropdown'
 
 export default function Searchbar() {
-  const { addSearch, recentSearches, clearSearches, removeSearch } =
-    useSearchStore((state) => state)
+  const { addSearch, recentSearches } = useSearchStore((state) => state)
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -81,39 +80,7 @@ export default function Searchbar() {
         </div>
 
         {isFocused && recentSearches.length > 0 && (
-          <ul className="absolute top-full left-0 mt-1 w-full bg-white border border-gray-300 rounded-sm shadow-md z-50 max-h-60 overflow-y-auto">
-            <div className="w-full flex justify-center items-center py-0.5">
-              <button
-                type="button"
-                onMouseDown={() => clearSearches()}
-                className="text-blue-500 text-sm cursor-pointer text-center w-fit hover:underline"
-              >
-                Borrar historial
-              </button>
-            </div>
-            {recentSearches.map((item, index) => (
-              <li
-                key={index}
-                className="flex justify-between items-center px-3 py-2 hover:bg-gray-100 text-neutral-800 cursor-pointer"
-                onMouseDown={() => handleSearch(item, true)}
-              >
-                <span>{item}</span>
-
-                <button
-                  type="button"
-                  onMouseDown={(e) => {
-                    e.preventDefault()
-                    e.stopPropagation()
-                    removeSearch(item)
-                  }}
-                  className="ml-2 cursor-pointer z-50 text-neutral-800 hover:text-red-500 transition-colors duration-200"
-                  aria-label={`Eliminar búsqueda ${item}`}
-                >
-                  <XIcon className="size-4" />
-                </button>
-              </li>
-            ))}
-          </ul>
+          <SearchDropdown handleSearch={handleSearch} />
         )}
       </div>
     </div>
