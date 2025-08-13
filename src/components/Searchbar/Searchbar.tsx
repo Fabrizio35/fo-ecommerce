@@ -85,7 +85,7 @@ export default function Searchbar() {
             <div className="w-full flex justify-center items-center py-0.5">
               <button
                 type="button"
-                onClick={() => clearSearches()}
+                onMouseDown={() => clearSearches()}
                 className="text-blue-500 text-sm cursor-pointer text-center w-fit hover:underline"
               >
                 Borrar historial
@@ -95,13 +95,14 @@ export default function Searchbar() {
               <li
                 key={index}
                 className="flex justify-between items-center px-3 py-2 hover:bg-gray-100 text-neutral-800 cursor-pointer"
-                onClick={() => handleSearch(item, true)}
+                onMouseDown={() => handleSearch(item, true)}
               >
                 <span>{item}</span>
 
                 <button
                   type="button"
-                  onClick={(e) => {
+                  onMouseDown={(e) => {
+                    e.preventDefault()
                     e.stopPropagation()
                     removeSearch(item)
                   }}
