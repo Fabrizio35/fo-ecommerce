@@ -22,8 +22,6 @@ export default function Searchbar() {
   )
   const [isFocused, setIsFocused] = useState<boolean>(false)
 
-  // Function to handle search submission
-  // It navigates to the search results page with the query
   const handleSearch = (searchTerm?: string, fromClick = false) => {
     const term = (searchTerm ?? query).trim()
 
@@ -36,21 +34,15 @@ export default function Searchbar() {
     }
   }
 
-  // Function to handle keydown events
-  // It triggers the search when the Enter key is pressed
   const handleKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
     if (evt.key === 'Enter') handleSearch()
   }
 
-  // Function to clear the search query
-  // It resets the query state and navigates to the home page
   const handleClear = () => {
     setQuery('')
     navigate('/')
   }
 
-  // Function to handle back navigation
-  // It navigates back to the previous page or to the home page if no search was
   const handleBack = () => {
     if (hasSearch) navigate(-1)
     else navigate('/')
