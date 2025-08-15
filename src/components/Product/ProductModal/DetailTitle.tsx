@@ -8,7 +8,7 @@ export default function DetailTitle({ icon, title }: DetailTitleProps) {
     <div className="flex items-center gap-1 text-neutral-900">
       {icon}
 
-      <h4 className="font-semibold text-lg">{title}</h4>
+      <h4 className="font-semibold">{title}</h4>
     </div>
   )
 }

@@ -10,7 +10,7 @@ export default function Product({ product, onClick }: ProductProps) {
   return (
     <article
       onClick={onClick}
-      className="p-2 rounded-lg shadow-md flex flex-col justify-between gap-2 bg-neutral-100 hover:scale-105 transition-transform duration-300 cursor-pointer"
+      className="p-2 rounded-lg shadow-sm flex flex-col justify-between gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer"
     >
       <img
         src={product.thumbnail}
@@ -19,11 +19,11 @@ export default function Product({ product, onClick }: ProductProps) {
         className="w-full rounded-sm h-48 object-cover"
       />
 
-      <span className="text-neutral-600 text-sm font-semibold">
+      <span className="text-neutral-600 text-xs font-semibold">
         {product?.brand}
       </span>
 
-      <h2 className="font-bold text-neutral-900">{product.title}</h2>
+      <h2 className="font-bold text-neutral-900 text-sm">{product.title}</h2>
 
       <div>
         <span className="text-neutral-500 line-through">
@@ -38,7 +38,7 @@ export default function Product({ product, onClick }: ProductProps) {
             )}
           </span>
 
-          <span className="font-semibold text-blue-500">
+          <span className="text-blue-500 font-semibold">
             {product.discountPercentage}% OFF
           </span>
         </div>

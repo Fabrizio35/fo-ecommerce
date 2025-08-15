@@ -25,7 +25,7 @@ export default function ProductDimensions({
   return (
     <div className="flex flex-col gap-2">
       <DetailTitle
-        icon={<DimensionsIcon className="size-7" />}
+        icon={<DimensionsIcon className="size-6" />}
         title="Dimensiones"
       />
 

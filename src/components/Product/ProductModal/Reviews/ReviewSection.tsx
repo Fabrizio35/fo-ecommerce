@@ -10,7 +10,7 @@ interface ReviewsSectionProps {
 export default function ReviewSection({ reviews }: ReviewsSectionProps) {
   return (
     <div className="flex flex-col gap-2">
-      <DetailTitle title="Reseñas" icon={<MessageIcon className="size-7" />} />
+      <DetailTitle title="Reseñas" icon={<MessageIcon className="size-6" />} />
 
       <ReviewList reviews={reviews} />
     </div>

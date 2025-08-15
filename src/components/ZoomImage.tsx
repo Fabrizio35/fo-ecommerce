@@ -46,7 +46,7 @@ export default function ZoomImage({
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="relative w-1/2 h-full rounded-md cursor-zoom-in overflow-hidden"
+      className="relative rounded-md cursor-zoom-in overflow-hidden"
       aria-label={alt}
       style={{
         backgroundImage: `url(${src})`,
@@ -54,7 +54,12 @@ export default function ZoomImage({
         backgroundPosition: 'center',
       }}
     >
-      <img src={src} alt={alt} className="size-full object-contain" />
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className="size-full object-contain"
+      />
 
       {showLens && (
         <div

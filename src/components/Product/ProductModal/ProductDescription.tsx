@@ -14,7 +14,7 @@ export default function ProductDescription({
   return (
     <div className="flex flex-col gap-2">
       <DetailTitle
-        icon={<FileDescriptionIcon className="size-7" />}
+        icon={<FileDescriptionIcon className="size-6" />}
         title="Descripción"
       />
 

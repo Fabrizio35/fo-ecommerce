@@ -22,7 +22,7 @@ export default function ProductInfo({
   return (
     <div className="flex flex-col gap-2">
       <DetailTitle
-        icon={<InfoCircleIcon className="size-7" />}
+        icon={<InfoCircleIcon className="size-6" />}
         title="Información"
       />
 

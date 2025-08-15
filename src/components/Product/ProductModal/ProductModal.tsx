@@ -6,8 +6,8 @@ import ProductDimensions from './ProductDimensions'
 import ProductInfo from './ProductInfo'
 import CloseModalButton from './CloseModalButton'
 import MainInfo from './MainInfo'
-import ZoomImage from '@/components/ZoomImage'
 import ReviewSection from './Reviews/ReviewSection'
+import ImageCarousel from '@/components/ImageCarousel'
 
 interface ProductModalProps {
   product: Product
@@ -64,7 +64,7 @@ export default function ProductModal({ onClose, product }: ProductModalProps) {
         <CloseModalButton handleClose={handleClose} />
 
         <div className="flex items-center gap-2">
-          <ZoomImage src={product.thumbnail} alt={`${product.title} image`} />
+          <ImageCarousel images={product.images} alt={product.title} />
 
           <MainInfo product={product} />
         </div>
