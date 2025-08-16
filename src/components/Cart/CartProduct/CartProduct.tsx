@@ -11,7 +11,7 @@ export default function CartProduct({ product }: CartProductProps) {
   return (
     <article
       key={product.id}
-      className="flex items-center gap-2 w-full px-2 py-1 shadow-md rounded-lg bg-neutral-100 relative"
+      className="flex items-center gap-2 w-full px-2 py-1 shadow-md border border-neutral-100 rounded-lg relative"
     >
       <RemoveFromCartButton product={product} />
 

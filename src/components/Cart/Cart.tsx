@@ -59,7 +59,7 @@ export default function Cart() {
     >
       <section
         onClick={(e) => e.stopPropagation()}
-        className={`bg-neutral-200 top-0 bottom-0 right-0 h-full p-4 pt-8 absolute max-w-md w-full transform transition-all duration-300 ease-in-out ${
+        className={`bg-white top-0 bottom-0 right-0 h-full p-4 pt-8 absolute max-w-md w-full transform transition-all duration-300 ease-in-out ${
           isVisible ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
