@@ -4,7 +4,7 @@ import CartButton from '../Cart/CartButton'
 
 export default function Navbar() {
   return (
-    <header className="w-full px-5 flex items-center justify-between shadow-md fixed top-0 right-0 left-0 max-h-14 h-full bg-white">
+    <header className="w-full px-5 flex items-center justify-between shadow-md fixed top-0 right-0 left-0 max-h-14 h-full bg-white z-50">
       <Logo />
 
       <Searchbar />
