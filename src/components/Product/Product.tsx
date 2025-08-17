@@ -10,7 +10,7 @@ export default function Product({ product, onClick }: ProductProps) {
   return (
     <article
       onClick={onClick}
-      className="p-2 rounded-lg shadow-sm flex flex-col justify-between gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer"
+      className="p-2 rounded-lg shadow-xs flex flex-col justify-between gap-2 bg-white hover:scale-105 transition-transform duration-300 cursor-pointer"
     >
       <img
         src={product.thumbnail}

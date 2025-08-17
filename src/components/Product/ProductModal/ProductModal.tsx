@@ -55,7 +55,7 @@ export default function ProductModal({ onClose, product }: ProductModalProps) {
     >
       <section
         onClick={(e) => e.stopPropagation()}
-        className={`bg-neutral-200 flex flex-col gap-4 max-w-2xl w-full max-h-[95vh] h-full overflow-y-scroll rounded-md p-4 shadow-xl relative my-10 transform transition-all duration-300 ${
+        className={`bg-white flex flex-col gap-4 max-w-2xl w-full max-h-[95vh] h-full overflow-y-scroll rounded-md p-4 shadow-xl relative my-10 transform transition-all duration-300 ${
           show
             ? 'opacity-100 scale-100 translate-y-0'
             : 'opacity-0 scale-90 translate-y-2'
