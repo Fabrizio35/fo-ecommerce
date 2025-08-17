@@ -26,11 +26,6 @@ export default function ProductModal({ onClose, product }: ProductModalProps) {
 
   useEffect(() => {
     setShow(true)
-    const scrollBarWidth =
-      window.innerWidth - document.documentElement.clientWidth
-
-    document.body.style.overflow = 'hidden'
-    document.body.style.paddingRight = `${scrollBarWidth}px`
 
     const handleKeyDown = (evt: KeyboardEvent) => {
       if (evt.key === 'Escape') {
@@ -40,8 +35,6 @@ export default function ProductModal({ onClose, product }: ProductModalProps) {
 
     document.addEventListener('keydown', handleKeyDown)
     return () => {
-      document.body.style.overflow = ''
-      document.body.style.paddingRight = ''
       document.removeEventListener('keydown', handleKeyDown)
     }
   }, [handleClose])
