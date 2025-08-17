@@ -29,7 +29,7 @@ export default function ImageCarousel({ images, alt }: ImageCarouselProps) {
         <button
           type="button"
           onClick={prevImage}
-          className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-1 shadow"
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-neutral-200 cursor-pointer hover:bg-neutral-100 rounded-full p-1 shadow"
         >
           <ChevronLeftIcon className="size-5" />
         </button>
@@ -39,7 +39,7 @@ export default function ImageCarousel({ images, alt }: ImageCarouselProps) {
         <button
           type="button"
           onClick={nextImage}
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-1 shadow"
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-neutral-200 cursor-pointer hover:bg-neutral-100 rounded-full p-1 shadow"
         >
           <ChevronRightIcon className="size-5" />
         </button>
