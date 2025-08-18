@@ -10,7 +10,7 @@ export default function Home() {
   const query = useQuery().get('search')
 
   return (
-    <div className='bg-neutral-100'>
+    <div className="bg-neutral-100 min-h-screen">
       <ProductList search={query} />
 
       <Cart />
