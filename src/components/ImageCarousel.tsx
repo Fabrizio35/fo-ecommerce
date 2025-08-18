@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@/icons'
 import ZoomImage from './ZoomImage'
 
@@ -17,6 +17,13 @@ export default function ImageCarousel({ images, alt }: ImageCarouselProps) {
   const nextImage = () => {
     setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
   }
+
+  useEffect(() => {
+    images.forEach((src) => {
+      const img = new Image()
+      img.src = src
+    })
+  }, [images])
 
   return (
     <div className="relative w-1/2 flex items-center justify-center">
