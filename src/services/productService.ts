@@ -15,13 +15,11 @@ export const getAllProducts = async () => {
 
     if (!response.ok) throw new Error('Error al solicitar los productos')
 
-    const data = await response.json()
+    const data: ResponseType = await response.json()
 
-    return data as ResponseType
+    return data
   } catch (error) {
-    if (error instanceof Error) {
-      throw new Error(error.message)
-    }
+    if (error instanceof Error) throw new Error(error.message)
   }
 }
 
@@ -33,13 +31,11 @@ export const searchProducts = async (query: string) => {
 
     if (!response.ok) throw new Error('Error al buscar los productos')
 
-    const data = await response.json()
+    const data: ResponseType = await response.json()
 
-    return data as ResponseType
+    return data
   } catch (error) {
-    if (error instanceof Error) {
-      throw new Error(error.message)
-    }
+    if (error instanceof Error) throw new Error(error.message)
   }
 }
 
@@ -55,27 +51,39 @@ export const getProductById = async (productId: string) => {
 
     return product
   } catch (error) {
-    if (error instanceof Error) {
-      throw new Error(error.message)
-    }
+    if (error instanceof Error) throw new Error(error.message)
   }
 }
 
-export const getAllProductsCategories = async () => {
+export const getCategories = async () => {
   try {
     const response = await apiClient(
       'https://dummyjson.com/products/categories'
     )
 
-    if (!response.ok)
-      throw new Error('Error al solicitar las categorías de los productos')
+    if (!response.ok) throw new Error('Error al solicitar categorías')
 
-    const productsCategories: ProductCategoryResponse = await response.json()
+    const data: ProductCategoryResponse[] = await response.json()
 
-    return productsCategories
+    return data
   } catch (error) {
-    if (error instanceof Error) {
-      throw new Error(error.message)
-    }
+    if (error instanceof Error) throw new Error(error.message)
+  }
+}
+
+export const getProductsByCategory = async (category: string, limit = 5) => {
+  try {
+    const response = await apiClient(
+      `https://dummyjson.com/products/category/${category}?limit=${limit}`
+    )
+
+    if (!response.ok)
+      throw new Error('Error al solicitar productos de la categoría')
+
+    const data: ResponseType = await response.json()
+
+    return data
+  } catch (error) {
+    if (error instanceof Error) throw new Error(error.message)
   }
 }
