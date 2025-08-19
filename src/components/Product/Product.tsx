@@ -10,7 +10,7 @@ export default function Product({ product, onClick }: ProductProps) {
   return (
     <article
       onClick={onClick}
-      className="p-2 rounded-lg shadow-xs flex flex-col justify-between gap-2 bg-white hover:scale-105 transition-transform duration-300 cursor-pointer"
+      className="group p-2 rounded-lg shadow-xs flex flex-col justify-between gap-2 bg-white hover:shadow-md transition-transform duration-300 cursor-pointer"
     >
       <img
         src={product.thumbnail}
@@ -23,7 +23,9 @@ export default function Product({ product, onClick }: ProductProps) {
         {product?.brand}
       </span>
 
-      <h2 className="font-bold text-neutral-900 text-sm">{product.title}</h2>
+      <h2 className="font-bold text-neutral-900 text-sm group-hover:text-blue-500">
+        {product.title}
+      </h2>
 
       <div>
         <span className="text-neutral-500 line-through">
